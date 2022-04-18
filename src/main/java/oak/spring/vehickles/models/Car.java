@@ -1,9 +1,6 @@
 package oak.spring.vehickles.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Car {
@@ -39,7 +36,9 @@ public class Car {
   /**
    * @ORM\ManyToOne(targetEntity=Owner::class, inversedBy="cars")
    */
-  private Long owner;
+  @ManyToOne
+  @JoinColumn(name = "ownerId")
+  private Owner owner;
 
   /**
    * @ORM\Column(type="string", length=200, nullable=true)
@@ -91,11 +90,11 @@ public class Car {
     this.manufacturer = manufacturer;
   }
 
-  public Long getOwner() {
+  public Owner getOwner() {
     return owner;
   }
 
-  public void setOwner(Long owner) {
+  public void setOwner(Owner owner) {
     this.owner = owner;
   }
 
@@ -123,4 +122,6 @@ public class Car {
     this.id = id;
   }
 
+  public Car() {
+  }
 }

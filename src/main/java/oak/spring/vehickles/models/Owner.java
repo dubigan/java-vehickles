@@ -97,4 +97,7 @@ public class Owner {
   public void setComment(String comment) {
     this.comment = comment;
   }
+
+  public Owner() {
+  }
 }
