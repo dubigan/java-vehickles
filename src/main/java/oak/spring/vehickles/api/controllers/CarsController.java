@@ -5,7 +5,6 @@ import oak.spring.vehickles.models.Car;
 import oak.spring.vehickles.repo.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,9 +19,10 @@ public class CarsController {
   }
 
   @GetMapping("/api/cars")
-  public Cars cars(@RequestParam(value = "owner", defaultValue = "-1") long owner, Model model) {
-    System.out.println(owner);
-    Iterable<Car> cars = repo.findAll(getOwnerCars(owner));
+  public Cars cars(@RequestParam(value = "owner", defaultValue = "-1") long owner) {
+    Iterable<Car> cars;
+    if ( owner >= 0 ) cars = repo.findAll(getOwnerCars(owner));
+    else cars = repo.findAll();
     return new Cars(cars);
   }
 }
