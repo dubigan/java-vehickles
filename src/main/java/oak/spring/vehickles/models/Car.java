@@ -1,8 +1,13 @@
 package oak.spring.vehickles.models;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
 @Entity
+@Data
+@NoArgsConstructor
 public class Car {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -50,78 +55,4 @@ public class Car {
    */
   private Long mileage;
 
-  public String getModel() {
-    return model;
-  }
-
-  public void setModel(String model) {
-    this.model = model;
-  }
-
-  public String getColor() {
-    return color;
-  }
-
-  public void setColor(String color) {
-    this.color = color;
-  }
-
-  public String getProduction() {
-    return production;
-  }
-
-  public void setProduction(String production) {
-    this.production = production;
-  }
-
-  public int getPower() {
-    return power;
-  }
-
-  public void setPower(int power) {
-    this.power = power;
-  }
-
-  public String getManufacturer() {
-    return manufacturer;
-  }
-
-  public void setManufacturer(String manufacturer) {
-    this.manufacturer = manufacturer;
-  }
-
-  public Owner getOwner() {
-    return owner;
-  }
-
-  public void setOwner(Owner owner) {
-    this.owner = owner;
-  }
-
-  public String getComment() {
-    return comment;
-  }
-
-  public void setComment(String comment) {
-    this.comment = comment;
-  }
-
-  public Long getMileage() {
-    return mileage;
-  }
-
-  public void setMileage(Long mileage) {
-    this.mileage = mileage;
-  }
-
-  public Long getId() {
-    return id;
-  }
-
-  public void setId(Long id) {
-    this.id = id;
-  }
-
-  public Car() {
-  }
 }
